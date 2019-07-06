@@ -1,3 +1,41 @@
-<p>
-  usuario works!
-</p>
+<div class="row" *ngIf="loading">
+    <div class="col-md-12">
+        <div class="alert alert-info text-center">
+            <i class="fas fa-sync-alt fa-spin fa-2x"></i>
+            <h2>Cargando...</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="error">
+    <div class="col-md-12">
+        <div class="alert alert-danger text-center">
+            <i class="fas fa-times-circle fa-2x"></i>
+            <h2>{{ error.status }}</h2>
+            <p>{{ error.message }}</p>
+            <p>{{ error.url }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="!error && !loading && usuario">
+    <div class="col-12 col-md-3">
+        <img class="img-fluid img-thumbnail" [src]="usuario.avatar">
+    </div>
+    <div class="col-12 col-md-9">
+        <ul class="list-group">
+            <li class="list-group-item text-secondary">
+                <span class="badge badge-info">ID </span> {{ usuario.id }}
+            </li>
+            <li class="list-group-item text-secondary">
+                <span class="badge badge-info">Nombre </span> {{ usuario.first_name }}
+            </li>
+            <li class="list-group-item text-secondary">
+                <span class="badge badge-info">Apellido </span> {{ usuario.last_name }}
+            </li>
+            <li class="list-group-item text-secondary">
+                <span class="badge badge-info">Email </span> {{ usuario.email }}
+            </li>
+        </ul>
+    </div>
+</div>
